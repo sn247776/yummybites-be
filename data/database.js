@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const connectDB = async() => {
   await mongoose
-    .connect(process.env.MONGO_URI2, {
+    .connect(process.env.MONGO_URI, {
       dbName: "yummybites",
     })
     .then((c) => console.log(`Database Connected with ${c.connection.host}`))

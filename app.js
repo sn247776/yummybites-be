@@ -1,8 +1,10 @@
 import express from "express";
 import { config } from "dotenv";
 import userRouter from "./routes/user.js";
+import Category from "./routes/food.js"
 import bodyParser from "body-parser";
 import cors from "cors"
+import mongoose from "mongoose";
 
 export const app = express();
 app.use(bodyParser.json());
@@ -21,9 +23,15 @@ app.use(
 );
 
 
+
+
+
 //Using Routes
 app.use("/api/v1/users", userRouter);
+
+app.use("/api/v1", Category);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
