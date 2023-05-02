@@ -4,7 +4,7 @@ import { Item } from "../models/items.js";
 
 const router = express.Router();
 
-router.post('/new', async (req, res) =>{
+router.post('/category', async (req, res) =>{
     const category = new Category({
       CategoryName:req.body.CategoryName
     });
@@ -16,6 +16,17 @@ router.post('/new', async (req, res) =>{
       res.status(400).json({ message: err.message})
     }
   })
+
+  router.get('/category/list',async (req, res) =>{
+    try {
+      const category = await Category.find();
+      res.json(category);
+    } catch (error) {
+      res.status(500).json({message: err.message})
+    }
+  })
+
+
 
 
   router.post('/items', async (req, res) =>{
@@ -32,6 +43,15 @@ router.post('/new', async (req, res) =>{
     }
     catch (err) {
       res.status(400).json({ message: err.message})
+    }
+  })
+
+  router.get('/items/list',async (req, res) =>{
+    try {
+      const item = await Item.find();
+      res.json(item);
+    } catch (error) {
+      res.status(500).json({message: err.message})
     }
   })
 
