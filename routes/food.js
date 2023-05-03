@@ -17,14 +17,7 @@ router.post('/category', async (req, res) =>{
     }
   })
 
-  router.get('/category/list',async (req, res) =>{
-    try {
-      const category = await Category.find();
-      res.json(category);
-    } catch (error) {
-      res.status(500).json({message: err.message})
-    }
-  })
+
 
 
 
@@ -46,14 +39,25 @@ router.post('/category', async (req, res) =>{
     }
   })
 
-  router.get('/items/list',async (req, res) =>{
+  router.post('/items/list',async (req, res) =>{
     try {
       const item = await Item.find();
-      res.json(item);
+      const category = await Category.find();
+      const array =[item,category]
+      res.json(array);
     } catch (error) {
       res.status(500).json({message: err.message})
     }
   })
+
+  // router.get('/category/list',async (req, res) =>{
+  //   try {
+      
+  //     res.json();
+  //   } catch (error) {
+  //     res.status(500).json({message: err.message})
+  //   }
+  // })
 
 
 
