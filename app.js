@@ -20,9 +20,12 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
+  
 );
 
+// to use CORS everywhare use only app.use(cors()); and its done.
 
+// app.use(cors());
 
 
 
