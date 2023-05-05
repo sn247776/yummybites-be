@@ -14,18 +14,20 @@ config({
     path: "./data/config.env",
   });
 
-app.use(
-  cors({
-    origin: [process.env.FE_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+// app.use(
+//   cors({
+//     origin: [process.env.FE_URL],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
   
-);
+// );
 
 // to use CORS everywhare use only app.use(cors()); and its done.
 
-// app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 
 
