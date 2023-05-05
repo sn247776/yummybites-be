@@ -2,6 +2,7 @@ import express from "express";
 import { config } from "dotenv";
 import userRouter from "./routes/user.js";
 import foodRouter from "./routes/food.js"
+import orderData from "./routes/orderData.js"
 import bodyParser from "body-parser";
 import cors from "cors"
 import mongoose from "mongoose";
@@ -14,26 +15,28 @@ config({
     path: "./data/config.env",
   });
 
-// app.use(
-//   cors({
-//     origin: [process.env.FE_URL],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//   })
+app.use(
+  cors({
+    origin: [process.env.FE_URL, "http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
   
-// );
+);
 
 // to use CORS everywhare use only app.use(cors()); and its done.
 
-app.use(cors({
-  origin: '*'
-}));
+// app.use(cors({
+//   origin: '*',
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// }));
 
 
 
 //Using Routes
 app.use("/api/v1/users", userRouter);
-
+app.use("/api/v1", orderData);
 app.use("/api/v1", foodRouter);
 
 app.get('/', (req, res) => {
