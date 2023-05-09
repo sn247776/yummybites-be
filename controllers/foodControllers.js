@@ -1,10 +1,7 @@
-import express from "express";
 import { Category } from "../models/category.js";
 import { Item } from "../models/items.js";
 
-const router = express.Router();
-
-router.post('/category', async (req, res) =>{
+export const AddCategory = async (req, res) =>{
     const category = new Category({
       CategoryName:req.body.CategoryName
     });
@@ -15,14 +12,10 @@ router.post('/category', async (req, res) =>{
     catch (err) {
       res.status(400).json({ message: err.message})
     }
-  })
+  }
 
 
-
-
-
-
-  router.post('/items', async (req, res) =>{
+  export const AddItem = async (req, res) =>{
     const item = new Item({
         "CategoryName": req.body.CategoryName,
         "name": req.body.name,
@@ -37,9 +30,9 @@ router.post('/category', async (req, res) =>{
     catch (err) {
       res.status(400).json({ message: err.message})
     }
-  })
+  }
 
-  router.post('/items/list',async (req, res) =>{
+  export const ItemsList = async (req, res) =>{
     try {
       const item = await Item.find();
       const category = await Category.find();
@@ -48,17 +41,4 @@ router.post('/category', async (req, res) =>{
     } catch (error) {
       res.status(500).json({message: err.message})
     }
-  })
-
-  // router.get('/category/list',async (req, res) =>{
-  //   try {
-      
-  //     res.json();
-  //   } catch (error) {
-  //     res.status(500).json({message: err.message})
-  //   }
-  // })
-
-
-
-  export default router;
+  }

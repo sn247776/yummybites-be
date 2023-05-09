@@ -1,11 +1,10 @@
 import express from "express";
 import { config } from "dotenv";
-import userRouter from "./routes/user.js";
-import foodRouter from "./routes/food.js"
-import orderData from "./routes/orderData.js"
+import userRouter from "./routes/userRoutes.js";
+import foodRouter from "./routes/foodRoutes.js"
+import orderData from "./routes/orderDataRoutes.js"
 import bodyParser from "body-parser";
 import cors from "cors"
-import mongoose from "mongoose";
 
 export const app = express();
 app.use(bodyParser.json());
